@@ -1,5 +1,5 @@
 {
-  "name": "Control de empresas",
+  "name": "control-de-empresas",
   "version": "1.0.0",
   "description": "Crud de categorías",
   "main": "index.js",
@@ -19,5 +19,14 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.9.1",
     "nodemon": "^2.0.21"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ocorzo-2021084/laboratorio2-control-empresas.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ocorzo-2021084/laboratorio2-control-empresas/issues"
+  },
+  "homepage": "https://github.com/ocorzo-2021084/laboratorio2-control-empresas#readme"
 }
