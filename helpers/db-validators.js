@@ -1,15 +1,15 @@
-const Role = require('../models/role');
 const Empresa = require('../models/empresa');
 const Sucursal = require('../models/sucursal');
+const Tipo = require('../models/tipo');
 
 //Este archivo maneja validaciones personalizadas
 
-const esRoleValido = async( rol = '' ) => {
+const esTipoValido = async( tipo = '' ) => {
 
-    const existeRol = await Role.findOne( { rol } );
+    const existeTipo = await Tipo.findOne( { tipo } );
 
-    if ( !existeRol ) {
-        throw new Error(`El rol ${ rol } no está registrado en la DB`);
+    if ( !existeTipo ) {
+        throw new Error(`El tipo ${ tipo } no está registrado en la DB`);
     }
 
 }
@@ -53,8 +53,8 @@ const existeSucursalPorId = async(id) => {
 
 
 module.exports = {
-    esRoleValido,
     emailExiste,
     existeEmpresaPorId,
-    existeSucursalPorId
+    existeSucursalPorId,
+    esTipoValido
 }
