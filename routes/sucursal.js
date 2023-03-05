@@ -3,6 +3,7 @@ const { Router } = require('express');
 const { check } = require('express-validator');
 const { deleteEmpresa } = require('../controllers/empresa');
 const { postSucursal, deleteSucursal, getSucursalPorID, putSucursal } = require('../controllers/sucursal');
+const { existeSucursalPorId } = require('../helpers/db-validators');
 const { validarCampos } = require('../middlewares/validar-campos');
 const { validarJWT } = require('../middlewares/validar-jwt');
 
@@ -32,6 +33,8 @@ router.put('/editar/:id', [
 
 router.delete('/eliminarSucursal/:id', [
     validarJWT,
+    check('id', 'No es un id de Mongo VÃ¡lido').isMongoId(),
+    check('id').custom(existeSucursalPorId),
     validarCampos
 ],deleteSucursal);
 
