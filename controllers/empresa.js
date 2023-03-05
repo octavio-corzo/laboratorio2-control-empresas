@@ -45,6 +45,8 @@ const putEmpresa = async (req = request, res = response) => {
     const salt = bcrypt.genSaltSync();
     resto.password = bcrypt.hashSync(resto.password, salt);
   }
+
+  resto.sucursales = [...req.body.sucursales];
   
   const empresaEliminada = await Empresa.findByIdAndUpdate(idEmpresa, resto, {new: true});
   res.json({
@@ -53,10 +55,22 @@ const putEmpresa = async (req = request, res = response) => {
   });
 };
 
+const deleteEmpresa = async (req = request, res = response) => {
+  const idEmpresa = req.empresa.id;
+  
+  const empresaEliminada = await Empresa.findByIdAndDelete(idEmpresa, {new: true});
+  res.status(200).json({
+    msg: `Se ha eliminado correctamente la empresa con el id ${ idEmpresa }`,
+    empresaEliminada,
+  });
+};
+
+
 module.exports = {
   getEmpresas,
   postEmpresa,
   putEmpresa,
+  deleteEmpresa
 };
 
 

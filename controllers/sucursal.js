@@ -1,39 +1,41 @@
 const { request, response } = require('express');
-const Sucursal = require('../models/sucursal')
+const Sucursal = require('../models/sucursal');
+const Empresa = require('../models/empresa');
 
+const getSucursales = async (req = request, res = response) => {
 
-// const getProductos = async (req = request, res = response) => {
+    //condiciones del get
+    const query = { estado: true };
 
-//     //condiciones del get
-//     const query = { estado: true };
+     const listaProducto = await Promise.all([
+        Producto.countDocuments(query),
+         Producto.find(query)
+             //.populate('usuario', 'nombre')
+             .populate('usuario', 'correo')
+            .populate('categoria', 'nombre')
+     ]);
 
-//     const listaProducto = await Promise.all([
-//         Producto.countDocuments(query),
-//         Producto.find(query)
-//             //.populate('usuario', 'nombre')
-//             .populate('usuario', 'correo')
-//             .populate('categoria', 'nombre')
-//     ]);
+     res.json({
+        msg: 'get Api - Controlador Usuario',
+         listaProducto
+});
 
-//     res.json({
-//         msg: 'get Api - Controlador Usuario',
-//         listaProducto
-//     });
+}
 
-// }
-
-// const getProductoPorID = async (req = request, res = response) => {
-
-//     const { id } = req.params;
-//     const productoById = await Producto.findById(id)
-//         //.populate('usuario', 'nombre')
-//         .populate('usuario', 'correo')
-//         .populate('categoria', 'nombre')
-
-
-//     res.status(201).json(productoById);
-
-// }
+const getSucursalPorID = async (req = request, res = response) => {
+    const _id = req.empresa.id;
+    const query = { estado: true, empresa: _id };
+  
+    const listaEmpresas = await Promise.all([
+      Sucursal.countDocuments(query),
+      Sucursal.find(query).populate("empresa", "nombre",),
+    ]);
+  
+    res.json({
+      msg: "get Api - Controlador empresa",
+      listaEmpresas,
+    });
+};
 
 const postSucursal = async (req = request, res = response) => {
 
@@ -82,22 +84,19 @@ const putProducto = async (req = request, res = response) => {
     });
 }
 
-const deleteProducto = async (req = request, res = response) => {
-    
-    const {id} = req.params;
-    const productoEliminado = await Producto.findByIdAndUpdate(id, {estado: false}, {new: true});
-    
+const deleteSucursal = async (req = request, res = response) => {
+    const { id } = req.params;
+    const sucursalEliminada = await Sucursal.findByIdAndDelete(id);
+  
     res.json({
-        msg: "DELETE",
-        productoEliminado
+      msg: "DELETE SUCURSAL",
+      sucursalEliminada,
     });
-}
-
-
-
+};
 
 module.exports = {
     postSucursal,
+    getSucursalPorID,
     putProducto,
-    deleteProducto
+    deleteSucursal
 }

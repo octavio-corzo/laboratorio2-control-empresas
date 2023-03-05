@@ -1,7 +1,7 @@
 //Importaciones
 const { Router } = require('express');
 const { check } = require('express-validator');
-const { postEmpresa, putEmpresa, getEmpresas } = require('../controllers/empresa');
+const { postEmpresa, putEmpresa, getEmpresas, deleteEmpresa, putSucursalEmpresa } = require('../controllers/empresa');
 const { esTipoValido, emailExiste } = require('../helpers/db-validators');
 
 const { validarCampos } = require('../middlewares/validar-campos');
@@ -25,6 +25,11 @@ router.put('/editarEmpresa', [
 
     validarCampos
 ] , putEmpresa);
+
+router.delete('/eliminarEmpresa', [
+    validarJWT,
+    validarCampos
+] , deleteEmpresa);
 
 
 module.exports = router;

@@ -6,6 +6,16 @@ const SucursalSchema = Schema ({
         required: [true, 'El nombre de la sucursal es obligatorio'],
         unique: true,
     },
+    municipio: {
+        type: String,
+        required: [true, 'El municipio es obligatorio'],
+        unique: true,
+    },
+    direccion: {
+        type: String,
+        required: [true, 'la direccion es obligatorio'],
+        unique: true,
+    },
     estado: {
         type: Boolean,
         default: true,
