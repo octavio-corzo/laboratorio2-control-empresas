@@ -26,8 +26,7 @@ const EmpresaSchema = Schema({
         type: Schema.Types.ObjectId,
         ref: 'Sucursal',
         default: null,
-    }],
-    
+    }],   
 });
 
 

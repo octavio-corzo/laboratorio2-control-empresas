@@ -66,21 +66,21 @@ const postSucursal = async (req = request, res = response) => {
    
 }
 
-const putProducto = async (req = request, res = response) => {
+const putSucursal = async (req = request, res = response) => {
     const { id } = req.params;
 
-    const { estado, usuario, ...restoData } = req.body;
+    const { estado, empresa, ...restoData } = req.body;
 
     if (restoData.nombre) {
         restoData.nombre = restoData.nombre.toUpperCase();
-        restoData.usuario = req.usuario._id;
+        restoData.empresa = req.empresa._id;
     }
 
-    const productoActualizado = await Producto.findByIdAndUpdate(id, restoData, ({ new: true }));
+    const empresaActualizada = await Sucursal.findByIdAndUpdate(id, restoData, ({ new: true }));
 
     res.status(201).json({
-        msg: 'Put Controller Producto',
-        productoActualizado
+        msg: 'Put Controller Sucursal',
+        empresaActualizada
     });
 }
 
@@ -97,6 +97,6 @@ const deleteSucursal = async (req = request, res = response) => {
 module.exports = {
     postSucursal,
     getSucursalPorID,
-    putProducto,
+    putSucursal,
     deleteSucursal
 }

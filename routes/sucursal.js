@@ -2,7 +2,7 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 const { deleteEmpresa } = require('../controllers/empresa');
-const { postSucursal, deleteSucursal, getSucursalPorID } = require('../controllers/sucursal');
+const { postSucursal, deleteSucursal, getSucursalPorID, putSucursal } = require('../controllers/sucursal');
 const { validarCampos } = require('../middlewares/validar-campos');
 const { validarJWT } = require('../middlewares/validar-jwt');
 
@@ -24,6 +24,11 @@ router.post('/agregarSucursal', [
     check('direccion', 'El nombre es obligatorio').not().isEmpty(),
     validarCampos
 ],postSucursal);
+
+router.put('/editar/:id', [
+    validarJWT,
+    validarCampos
+],putSucursal);
 
 router.delete('/eliminarSucursal/:id', [
     validarJWT,

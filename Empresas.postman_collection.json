@@ -1,0 +1,301 @@
+{
+	"info": {
+		"_postman_id": "8a374cc4-8237-45d5-9213-eff8d01536a9",
+		"name": "Empresas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25429540"
+	},
+	"item": [
+		{
+			"name": "POST agregar empresa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"sex\",\r\n    \"correo\": \"sex@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"tipo\": \"RESTAURANTE\" ,\r\n    \"sucursales\": [\r\n        \r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/empresas/agregarEmpresa",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"empresas",
+						"agregarEmpresa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"correo\": \"sex@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST aregar sucursal",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDAzZmVmYmFiNTE0MjVkODUzMzczYzEiLCJpYXQiOjE2Nzc5ODM1MTgsImV4cCI6MTY3ODAwMTUxOH0.0OjpMGn6zpu2cKhIJzN8vmwrCdw21F6eDyZKu_sN17k",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Sucursal villa canales\",\r\n    \"municipio\": \"Villa Canales\",\r\n    \"direccion\": \"13 av 4ta calle\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/sucursales/agregarSucursal",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"sucursales",
+						"agregarSucursal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT editar empresa",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDAzZmVmYmFiNTE0MjVkODUzMzczYzEiLCJpYXQiOjE2Nzc5ODM1MTgsImV4cCI6MTY3ODAwMTUxOH0.0OjpMGn6zpu2cKhIJzN8vmwrCdw21F6eDyZKu_sN17k",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sucursales\": [\r\n        \"6403fefbab51425d853373c1\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/empresas/editarEmpresa",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"empresas",
+						"editarEmpresa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET empresas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/empresas/mostrar",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"empresas",
+						"mostrar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE eliminar empresa",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDAxMzJiNDdlOTdjMzM5YzI0YjY0NGEiLCJpYXQiOjE2Nzc5Nzc5MDYsImV4cCI6MTY3Nzk5NTkwNn0.SRB0FoOMsabOqUJCH0cp4LaSzG19rZBlqVqZRgivr48",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/empresas/eliminarEmpresa",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"empresas",
+						"eliminarEmpresa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE eliminar sucursal",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDAzZjNhZjUwYzQ5ZGI3MjM3ZjBiNWIiLCJpYXQiOjE2Nzc5ODA2MzEsImV4cCI6MTY3Nzk5ODYzMX0.bSn0B9pMCtgcur50QKQe-fPQCTdz9cGTpIfpDNaPNGQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/sucursales/eliminarSucursal/6403f40850c49db7237f0b63",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"sucursales",
+						"eliminarSucursal",
+						"6403f40850c49db7237f0b63"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET sucursales por empresa",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDAzZmVmYmFiNTE0MjVkODUzMzczYzEiLCJpYXQiOjE2Nzc5ODM1MTgsImV4cCI6MTY3ODAwMTUxOH0.0OjpMGn6zpu2cKhIJzN8vmwrCdw21F6eDyZKu_sN17k",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/sucursales/mostrarSucursalEmpresa",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"sucursales",
+						"mostrarSucursalEmpresa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET buscador",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/buscar/empresas/Burger King",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"buscar",
+						"empresas",
+						"Burger King"
+					],
+					"query": [
+						{
+							"key": "x-token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDAzZmVmYmFiNTE0MjVkODUzMzczYzEiLCJpYXQiOjE2Nzc5ODM1MTgsImV4cCI6MTY3ODAwMTUxOH0.0OjpMGn6zpu2cKhIJzN8vmwrCdw21F6eDyZKu_sN17k",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT editar sucursal",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDA0MWQ0NmRiYmUzNWRjYjUzMWZlN2IiLCJpYXQiOjE2Nzc5OTE1ODYsImV4cCI6MTY3ODAwOTU4Nn0.YgxWs7H6VZOYZEHDiv10DbnUZ-Y1Kh1fy1Ftbf_B1zQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Sucursal La reformita\",\r\n    \"municipio\": \"Guatemala zona 12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/sucursales/editar/64041e09dbbe35dcb531fe8a",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"sucursales",
+						"editar",
+						"64041e09dbbe35dcb531fe8a"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
